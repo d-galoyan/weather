@@ -5,8 +5,10 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -30,17 +32,20 @@ import com.example.weather.presentation.components.PrintWeatherCondition
 @Composable
 fun NextDaysScreen(weather: Weather) {
 
-    LazyColumn {
-        items(weather.days, key = { it.day }) { nextDay ->
-            WeatherItem(
-                nextDay = nextDay,
-                windSpeedUnit = weather.windSpeedUnit,
-                humidityUnit = weather.humidityUnit,
-                pressureUnit = weather.pressureUnit
-            )
-            Divider()
+    Box(modifier = Modifier.fillMaxHeight()) {
+        LazyColumn {
+            items(weather.days, key = { it.day }) { nextDay ->
+                WeatherItem(
+                    nextDay = nextDay,
+                    windSpeedUnit = weather.windSpeedUnit,
+                    humidityUnit = weather.humidityUnit,
+                    pressureUnit = weather.pressureUnit
+                )
+                Divider()
+            }
         }
     }
+
 }
 
 @Composable
