@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="cities">Города</string>
+    <string name="detailed">Подробный</string>
+    <string name="settings">Настройки</string>
+    <string name="today">Сегодня</string>
+    <string name="tomorrow">Завтра</string>
+    <string name="days">Дней</string>
+    <string name="day">День</string>
+    <string name="night">Ночь</string>
+    <string name="search_places">Поиск мест</string>
+    <string name="fells_like">Как будто</string>
+    <string name="wind">Ветер</string>
+    <string name="humidity">Влажность</string>
+    <string name="pressure">Давление</string>
+    <string name="sunrise">Восход</string>
+    <string name="sunset">Закат</string>
+    <string name="temperature_unit">Единица измерения температуры</string>
+</resources>
