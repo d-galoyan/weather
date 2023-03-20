@@ -36,7 +36,7 @@ class WeatherLocalDataSource @Inject constructor(
             long,
             lat,
             dateFormatter.getCurrentFormattedDate(),
-            dateFormatter.addDays(6).getFormattedDate(),
+            dateFormatter.addDays(9).getFormattedDate(),
             unit.value
         ).toWeather(cityName)
     }
