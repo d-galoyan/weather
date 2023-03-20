@@ -1,5 +1,8 @@
 package com.example.weather.domain.models
 
+import androidx.annotation.StringRes
+import com.example.weather.R
+
 data class Weather(
     val id : Int,
     val cityName: String,
@@ -47,15 +50,15 @@ data class DayWeather(
     val hourly: List<Hourly>,
 )
 
-enum class WeatherCondition(val code : Int) {
-    Sunny(0),
-    PartiallyCloudy(1),
-    MostlyCloudy(2),
-    Cloudy(3),
-    PartiallyRainy(61),
-    MostlyRainy(62),
-    Rain(63),
-    PartiallyShower(80),
-    MostlyShower(81),
-    Showers(82)
+enum class WeatherCondition(val code : Int, @StringRes val desc : Int) {
+    Sunny(0, R.string.sunny),
+    PartiallyCloudy(1, R.string.partially_cloudy),
+    MostlyCloudy(2, R.string.mostly_cloudy),
+    Cloudy(3, R.string.cloudy),
+    PartiallyRainy(61, R.string.partially_rainy),
+    MostlyRainy(62, R.string.mostly_cloudy),
+    Rain(63, R.string.rain),
+    PartiallyShower(80, R.string.partially_showers),
+    MostlyShower(81, R.string.mostly_showers),
+    Showers(82, R.string.showers)
 }

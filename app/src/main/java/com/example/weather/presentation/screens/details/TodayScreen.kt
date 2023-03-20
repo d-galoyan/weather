@@ -10,10 +10,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.weather.domain.models.Weather
 import com.example.weather.presentation.components.ImageByWeatherCode
+import com.example.weather.presentation.components.PrintWeatherCondition
 import com.example.weather.presentation.components.TemperatureInfo
 
 @Composable
@@ -35,10 +37,13 @@ fun TodayScreen(weather: Weather) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 TemperatureInfo(weather)
-                ImageByWeatherCode(
-                    today.weatherCode,
-                    Modifier.size(160.dp)
-                )
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    ImageByWeatherCode(
+                        today.weatherCode,
+                        Modifier.size(160.dp)
+                    )
+                    PrintWeatherCondition(today.weatherCode)
+                }
             }
             Row {
                 WeatherInfo(

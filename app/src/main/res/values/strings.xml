@@ -16,4 +16,14 @@
     <string name="sunrise">Sunrise</string>
     <string name="sunset">Sunset</string>
     <string name="temperature_unit">Temperature Unit</string>
+    <string name="sunny">Sunny</string>
+    <string name="partially_cloudy">Partially Cloudy</string>
+    <string name="mostly_cloudy">Mostly Cloudy</string>
+    <string name="cloudy">Cloudy</string>
+    <string name="partially_rainy">Partially Rainy</string>
+    <string name="mostly_rainy">Mostly Rainy</string>
+    <string name="rain">Rain</string>
+    <string name="partially_showers">Partially Showers</string>
+    <string name="mostly_showers">Mostly Showers</string>
+    <string name="showers">Showers</string>
 </resources>

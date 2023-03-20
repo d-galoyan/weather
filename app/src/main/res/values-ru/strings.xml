@@ -16,4 +16,14 @@
     <string name="sunrise">Восход</string>
     <string name="sunset">Закат</string>
     <string name="temperature_unit">Единица измерения температуры</string>
+    <string name="sunny">Солнечно</string>
+    <string name="partially_cloudy">s</string>
+    <string name="mostly_cloudy">Переменная облачность</string>
+    <string name="cloudy">Облачно</string>
+    <string name="partially_rainy">Частично дождливо</string>
+    <string name="mostly_rainy">Преимущественно дождливо</string>
+    <string name="rain">Дождь</string>
+    <string name="partially_showers">Частично ливни</string>
+    <string name="mostly_showers">В основном ливни</string>
+    <string name="showers">Души</string>
 </resources>
