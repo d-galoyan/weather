@@ -33,7 +33,6 @@ class AddCityViewModel @Inject constructor(
     private fun getPredictions(address: String): Job {
         return viewModelScope.launch {
             delay(500)
-
             predictions = getCityUseCase(input = address)
         }
     }

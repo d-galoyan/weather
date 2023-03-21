@@ -78,7 +78,7 @@ fun WeatherNavHost(
             exitTransition = {
                 slideOutOfContainer(
                     AnimatedContentScope.SlideDirection.Left,
-                    animationSpec = tween(700)
+                    animationSpec = tween(500)
                 )
             }
         ) {
