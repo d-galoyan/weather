@@ -1,4 +1,4 @@
-package com.example.weather.presentation.components
+package com.example.weather.presentation.commons
 
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable

@@ -1,11 +1,10 @@
-package com.example.weather.presentation.components
+package com.example.weather.presentation.commons
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.sp
 import com.example.weather.R
 import com.example.weather.domain.models.Weather
 

@@ -1,4 +1,4 @@
-package com.example.weather.presentation.components
+package com.example.weather.presentation.commons
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding

@@ -1,3 +1,5 @@
+package com.example.weather.presentation.commons
+
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column

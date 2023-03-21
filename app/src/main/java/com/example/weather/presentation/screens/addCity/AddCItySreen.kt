@@ -1,6 +1,5 @@
 package com.example.weather.presentation.screens.addCity
 
-import AutoCompleteTextField
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -10,7 +9,8 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.weather.R
-import com.example.weather.presentation.components.Spinner
+import com.example.weather.presentation.commons.AutoCompleteTextField
+import com.example.weather.presentation.commons.Spinner
 
 @Composable
 fun AddCityScreen(

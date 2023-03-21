@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.weather.R
 import com.example.weather.domain.models.DayWeather
-import com.example.weather.presentation.components.ImageByWeatherCode
+import com.example.weather.presentation.commons.ImageByWeatherCode
 
 @Composable
 fun WeatherInfo(

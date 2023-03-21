@@ -14,9 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.weather.data.mappers.toWeatherShort
 import com.example.weather.domain.models.Weather
-import com.example.weather.presentation.components.DayNightTempInfo
-import com.example.weather.presentation.components.ImageByWeatherCode
-import com.example.weather.presentation.components.PrintWeatherCondition
+import com.example.weather.presentation.commons.DayNightTempInfo
+import com.example.weather.presentation.commons.ImageByWeatherCode
+import com.example.weather.presentation.commons.PrintWeatherCondition
 
 @Composable
 fun TomorrowScreen(weather: Weather) {
