@@ -35,8 +35,8 @@ import com.example.weather.presentation.commons.ImageByWeatherCode
 @Composable
 fun CitiesGridScreen(
     weathers: List<WeatherShort>,
-    navigateToDetails: (Int) -> Unit,
-    removeWeather: (Int) -> Unit
+    navigateToDetails: (String) -> Unit,
+    removeWeather: (String) -> Unit
 ) {
 
     LazyColumn(

@@ -37,7 +37,8 @@ fun WeatherNavHost(
                     AddCityRoute.route -> slideIntoContainer(
                         AnimatedContentScope.SlideDirection.Down,
                         animationSpec = tween(500)
-                    ) // slowly fade it out
+                    )
+
                     else -> slideIntoContainer(
                         AnimatedContentScope.SlideDirection.Left,
                         animationSpec = tween(500)
@@ -49,7 +50,8 @@ fun WeatherNavHost(
                     AddCityRoute.route -> slideOutOfContainer(
                         AnimatedContentScope.SlideDirection.Up,
                         animationSpec = tween(500)
-                    ) // slowly fade it out
+                    )
+
                     else -> slideOutOfContainer(
                         AnimatedContentScope.SlideDirection.Right,
                         animationSpec = tween(500)
@@ -67,7 +69,7 @@ fun WeatherNavHost(
         composable(
             route = DetailsDestination.routeWithArgs,
             arguments = listOf(navArgument(DetailsDestination.detailsIdArg) {
-                type = NavType.IntType
+                type = NavType.StringType
             }),
             enterTransition = {
                 slideIntoContainer(

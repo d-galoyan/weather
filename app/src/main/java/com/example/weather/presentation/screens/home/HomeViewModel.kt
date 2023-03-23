@@ -60,7 +60,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun removeWeather(id: Int) {
+    fun removeWeather(id: String) {
         viewModelScope.launch {
             removeWeatherUseCase(id)
         }

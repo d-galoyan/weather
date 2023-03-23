@@ -35,10 +35,10 @@ interface WeatherDao {
 
     @Transaction
     @Query("SELECT * from weather WHERE id = :id")
-    fun getWeather(id: Int): Flow<WeatherWithHourlyAndDaily>
+    fun getWeather(id: String): Flow<WeatherWithHourlyAndDaily>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(weather: WeatherEntity): Long
+    suspend fun insert(weather: WeatherEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertHourly(hourly: List<HourlyWeatherEntity>)
@@ -50,5 +50,5 @@ interface WeatherDao {
     suspend fun update(item: WeatherEntity)
 
     @Query("DELETE from weather WHERE id=:id")
-    suspend fun deleteWeather(id: Int)
+    suspend fun deleteWeather(id: String)
 }

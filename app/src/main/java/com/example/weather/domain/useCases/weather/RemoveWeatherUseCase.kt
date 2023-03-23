@@ -6,7 +6,7 @@ import javax.inject.Inject
 class RemoveWeatherUseCase @Inject constructor(
     private val weatherRepo: WeatherRepository,
 ) {
-    suspend operator fun invoke(id: Int) {
+    suspend operator fun invoke(id: String) {
         weatherRepo.removeWeather(id)
     }
 }

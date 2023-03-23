@@ -41,11 +41,11 @@ class WeatherLocalDataSource @Inject constructor(
         ).toWeather(cityName)
     }
 
-    override suspend fun getWeather(id: Int): Flow<Weather> {
+    override suspend fun getWeather(id: String): Flow<Weather> {
         return database.weatherDao().getWeather(id).map { it.toWeather() }
     }
 
-    override suspend fun removeWeather(id: Int) {
+    override suspend fun removeWeather(id: String) {
         return database.weatherDao().deleteWeather(id)
     }
 
@@ -57,9 +57,9 @@ class WeatherLocalDataSource @Inject constructor(
     @Transaction
     override suspend fun saveWeather(weather: Weather) {
         database.withTransaction {
-            val weatherId = database.weatherDao().insert(weather.toWeatherEntity())
+            database.weatherDao().insert(weather.toWeatherEntity())
             val ids = database.weatherDao()
-                .insertDaily(weather.days.map { it.toWeatherDailyEntity(weatherId) })
+                .insertDaily(weather.days.map { it.toWeatherDailyEntity(weather.id) })
 
             val hourlies = ids.mapIndexed { index, id ->
                 weather.days[index].hourly.map {

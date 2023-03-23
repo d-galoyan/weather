@@ -21,7 +21,7 @@ class DetailsViewModel @Inject constructor(
     lateinit var uiState: StateFlow<DetailsUiState>
         private set
 
-    private val itemId: Int = checkNotNull(savedStateHandle[DetailsDestination.detailsIdArg])
+    private val itemId: String = checkNotNull(savedStateHandle[DetailsDestination.detailsIdArg])
 
     init {
         getWeatherDetails()

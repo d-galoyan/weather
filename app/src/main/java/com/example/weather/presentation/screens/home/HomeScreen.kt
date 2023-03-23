@@ -31,7 +31,7 @@ import java.time.LocalDateTime
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun HomeScreen(
-    navigateToDetails: (Int) -> Unit,
+    navigateToDetails: (String) -> Unit,
     onNewCityClick: () -> Unit,
 ) {
     val connection by connectivityState()
