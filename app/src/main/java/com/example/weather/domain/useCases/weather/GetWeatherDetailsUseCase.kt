@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetWeatherDetailsUseCase @Inject constructor(
     private val weatherRepo: WeatherRepository
 ) {
-    suspend operator fun invoke(id : Int) : Flow<Weather> {
+    suspend operator fun invoke(id : String) : Flow<Weather> {
         return weatherRepo.getWeather(id)
     }
 }

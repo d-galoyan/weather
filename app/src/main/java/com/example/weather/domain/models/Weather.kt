@@ -4,7 +4,7 @@ import androidx.annotation.StringRes
 import com.example.weather.R
 
 data class Weather(
-    val id : Int,
+    val id : String,
     val cityName: String,
     val dailyMax: Int,
     val nightMax: Int,
@@ -20,7 +20,7 @@ data class Weather(
 )
 
 data class WeatherShort(
-    val id : Int,
+    val id : String,
     val cityName: String,
     val dailyMax: Int,
     val nightMax: Int,

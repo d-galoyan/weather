@@ -51,7 +51,7 @@ fun WeatherDataModel.toWeather(cityName: String): Weather {
     val today = nextDays[0]
 
     return Weather(
-        id = 0,
+        id = "$lat$long",
         cityName = cityName,
         dailyMax = today.dailyMax,
         nightMax = today.nightMax,
@@ -111,7 +111,7 @@ fun Weather.toWeatherShort(): WeatherShort {
     )
 }
 
-fun DayWeather.toWeatherDailyEntity(weatherId: Long): DailyWeatherEntity {
+fun DayWeather.toWeatherDailyEntity(weatherId: String): DailyWeatherEntity {
     return DailyWeatherEntity(
         weather_id = weatherId,
         day = day,

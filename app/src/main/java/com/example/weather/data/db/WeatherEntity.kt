@@ -10,8 +10,8 @@ import androidx.room.Relation
 
 @Entity(tableName = "weather")
 data class WeatherEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    @PrimaryKey
+    val id: String,
     val cityName: String,
     val lat: Float,
     val lng: Float,
@@ -38,7 +38,7 @@ data class DailyWeatherEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     @ColumnInfo(name = "weather_id", index = true)
-    val weather_id: Long,
+    val weather_id: String,
     val day: String,
     val maxTemp: Int,
     val minTemp: Int,

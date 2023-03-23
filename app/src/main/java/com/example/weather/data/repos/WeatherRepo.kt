@@ -19,11 +19,11 @@ class WeatherRepo @Inject constructor(private val weatherDataSource: WeatherData
         return weatherDataSource.getForecast(coordinates, cityName, unit)
     }
 
-    override suspend fun getWeather(id: Int): Flow<Weather> {
+    override suspend fun getWeather(id: String): Flow<Weather> {
         return weatherDataSource.getWeather(id)
     }
 
-    override suspend fun removeWeather(id: Int) {
+    override suspend fun removeWeather(id: String) {
         return weatherDataSource.removeWeather(id)
     }
 

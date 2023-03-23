@@ -24,11 +24,9 @@ private fun getCurrentConnectivityState(
     connectivityManager: ConnectivityManager
 ): ConnectionState {
 
-    val connected = connectivityManager.allNetworks.any { network ->
-        connectivityManager.getNetworkCapabilities(network)
-            ?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-            ?: false
-    }
+    val connected = connectivityManager.getNetworkCapabilities(
+        connectivityManager.activeNetwork
+    )?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
 
     return if (connected) ConnectionState.Available else ConnectionState.Unavailable
 }
