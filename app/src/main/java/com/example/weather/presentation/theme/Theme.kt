@@ -36,6 +36,7 @@ fun WeatherTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composabl
         LightColorPalette
     }
 
+
     MaterialTheme(
         colors = colors,
         typography = Typography,
