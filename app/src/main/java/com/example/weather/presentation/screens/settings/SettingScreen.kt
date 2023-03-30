@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.RadioButton
+import androidx.compose.material.Switch
+import androidx.compose.material.SwitchDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -18,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.weather.R
 import com.example.weather.domain.models.TempUnit
+import com.example.weather.domain.models.ThemeMode
 
 @Composable
 fun SettingScreen() {
@@ -30,8 +33,29 @@ fun SettingScreen() {
     ) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(32.dp),
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = stringResource(id = R.string.dark_mode),
+                style = MaterialTheme.typography.h6
+            )
+            Switch(
+                checked = settingsViewModel.isDark,
+                onCheckedChange = {
+                    settingsViewModel.setThemeMode(
+                        if (settingsViewModel.isDark) ThemeMode.Light else ThemeMode.Dark
+                    )
+                },
+                colors = SwitchDefaults.colors(
+                    uncheckedThumbColor = MaterialTheme.colors.secondary,
+                )
+            )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {

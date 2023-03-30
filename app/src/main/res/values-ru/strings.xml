@@ -26,4 +26,5 @@
     <string name="partially_showers">Частично ливни</string>
     <string name="mostly_showers">В основном ливни</string>
     <string name="showers">Души</string>
+    <string name="dark_mode">Темный режим</string>
 </resources>

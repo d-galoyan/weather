@@ -10,7 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.artspace.ui.theme.WeatherTheme
+import com.example.weather.domain.models.ThemeMode
 import com.example.weather.presentation.navigation.WeatherNavHost
+import com.example.weather.presentation.utils.themeMode
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,7 +21,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            WeatherTheme {
+            WeatherTheme(themeMode() === ThemeMode.Dark) {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background

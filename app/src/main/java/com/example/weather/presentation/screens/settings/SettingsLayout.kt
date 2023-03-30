@@ -1,4 +1,4 @@
-package com.example.weather.presentation.screens.addCity
+package com.example.weather.presentation.screens.settings
 
 import android.annotation.SuppressLint
 import androidx.compose.material.Icon
@@ -12,7 +12,6 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
-import com.example.weather.presentation.screens.settings.SettingsDestination
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable

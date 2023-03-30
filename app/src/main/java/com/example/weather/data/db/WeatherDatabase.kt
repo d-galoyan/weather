@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
         DailyWeatherEntity::class,
         SettingsEntity::class
     ],
-    version = 14,
+    version = 15,
     exportSchema = false
 )
 abstract class WeatherDatabase : RoomDatabase() {
