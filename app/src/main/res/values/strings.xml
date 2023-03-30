@@ -26,4 +26,5 @@
     <string name="partially_showers">Partially Showers</string>
     <string name="mostly_showers">Mostly Showers</string>
     <string name="showers">Showers</string>
+    <string name="dark_mode">Dark Mode</string>
 </resources>

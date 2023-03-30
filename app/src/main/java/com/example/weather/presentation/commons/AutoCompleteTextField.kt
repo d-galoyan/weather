@@ -49,7 +49,7 @@ fun AutoCompleteTextField(
         }
     }
 
-    Column() {
+    Column {
         TextField(
             value = text,
             onValueChange = { text = it },

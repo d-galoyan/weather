@@ -9,7 +9,7 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.example.weather.presentation.screens.addCity.AddCityRoute
 import com.example.weather.presentation.screens.addCity.AddCityScreen
-import com.example.weather.presentation.screens.addCity.SettingsLayout
+import com.example.weather.presentation.screens.settings.SettingsLayout
 import com.example.weather.presentation.screens.details.DetailsDestination
 import com.example.weather.presentation.screens.details.DetailsScreen
 import com.example.weather.presentation.screens.details.DetailsScreenLayout

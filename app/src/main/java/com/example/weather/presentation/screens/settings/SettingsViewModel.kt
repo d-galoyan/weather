@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weather.domain.models.Settings
 import com.example.weather.domain.models.TempUnit
+import com.example.weather.domain.models.ThemeMode
 import com.example.weather.domain.useCases.settings.GetSettingsUseCase
 import com.example.weather.domain.useCases.settings.UpdateSettingsUseCase
 import com.example.weather.domain.useCases.weather.UpdateWeatherDataUseCase
@@ -24,6 +25,9 @@ class SettingsViewModel @Inject constructor(
 
     lateinit var settings: StateFlow<Settings>
         private set
+
+    val isDark: Boolean
+        get() = settings.value.theme === ThemeMode.Dark
 
     init {
         getSetting()
@@ -45,6 +49,14 @@ class SettingsViewModel @Inject constructor(
                 settings.value.copy(tempUnit = unit)
             )
             updateWeatherDataUseCase(unit)
+        }
+    }
+
+    fun setThemeMode(theme: ThemeMode) {
+        viewModelScope.launch {
+            updateSettings(
+                settings.value.copy(theme = theme)
+            )
         }
     }
 }
