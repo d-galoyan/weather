@@ -1,9 +1,7 @@
 package com.example.weather.domain.models
 
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class Settings(
+    val id : Int = 0,
     val tempUnit: TempUnit = TempUnit.Celsius
 )
 

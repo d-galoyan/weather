@@ -1,7 +1,7 @@
 package com.example.weather.data.mappers
 
-import com.example.weather.data.models.Geometry
-import com.example.weather.data.models.GooglePrediction
+import com.example.weather.data.dataSourceImpls.places.Geometry
+import com.example.weather.data.dataSourceImpls.places.GooglePrediction
 import com.example.weather.domain.models.City
 import com.example.weather.domain.models.CityGeometry
 

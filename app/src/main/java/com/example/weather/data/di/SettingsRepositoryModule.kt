@@ -1,6 +1,6 @@
 package com.example.weather.data.di
 
-import com.example.weather.data.dataSourceImpls.settings.SettingsDataSource
+import com.example.weather.data.dataSourceImpls.settings.SettingsDataSourceImpl
 import com.example.weather.data.repos.SettingsRepo
 import com.example.weather.domain.repositories.SettingsRepository
 import dagger.Module
@@ -13,7 +13,7 @@ import dagger.hilt.android.components.ViewModelComponent
 class SettingsRepositoryModule {
 
     @Provides
-    fun providesSettingsRepository(settingsDataSource: SettingsDataSource): SettingsRepository {
+    fun providesSettingsRepository(settingsDataSource: SettingsDataSourceImpl): SettingsRepository {
         return SettingsRepo(settingsDataSource)
     }
 }

@@ -5,7 +5,7 @@ import com.example.weather.data.db.DailyWithHourly
 import com.example.weather.data.db.HourlyWeatherEntity
 import com.example.weather.data.db.WeatherEntity
 import com.example.weather.data.db.WeatherWithHourlyAndDaily
-import com.example.weather.data.models.WeatherDataModel
+import com.example.weather.data.dataSourceImpls.weather.WeatherDataModel
 import com.example.weather.data.utils.DateTimeUtils
 import com.example.weather.domain.models.Hourly
 import com.example.weather.domain.models.DayWeather
