@@ -23,7 +23,7 @@ import androidx.compose.material.SwipeToDismiss
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.rememberDismissState
-import androidx.compose.material3.Text
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -63,7 +63,10 @@ fun CitiesGridScreen(
                                 .padding(8.dp)
                                 .height(IntrinsicSize.Max)
                         ) {
-                            Text(text = weather.cityName, style = MaterialTheme.typography.h5)
+                            Text(
+                                text = weather.cityName,
+                                style = MaterialTheme.typography.h5,
+                            )
                             DayNightTempInfo(weather)
                         }
                         ImageByWeatherCode(
