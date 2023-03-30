@@ -9,7 +9,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -22,8 +24,11 @@ import com.example.weather.domain.models.TempUnit
 fun SettingScreen() {
 
     val settingsViewModel: SettingsViewModel = hiltViewModel()
+    val settings by settingsViewModel.settings.collectAsState()
 
-    val settings = settingsViewModel.settings.collectAsState().value
+   /* LaunchedEffect(key1 =){
+
+    }*/
 
     Column(
         modifier = Modifier.padding(16.dp)

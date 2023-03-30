@@ -1,7 +1,5 @@
 package com.example.weather.data.dataSourceImpls.places
 
-import com.example.weather.data.models.GooglePredictionDataModel
-import com.example.weather.data.models.PlaceGeometry
 import retrofit2.http.GET
 import retrofit2.http.Query
 

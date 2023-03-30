@@ -2,7 +2,6 @@ package com.example.weather.data.repos
 
 import com.example.weather.domain.dataSources.SettingDataSource
 import com.example.weather.domain.models.Settings
-import com.example.weather.domain.models.TempUnit
 import com.example.weather.domain.repositories.SettingsRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -12,7 +11,7 @@ class SettingsRepo @Inject constructor(private val settingsDataStore : SettingDa
         return settingsDataStore.getSettings()
     }
 
-    override suspend fun setTempUnit(unit: TempUnit) {
-        settingsDataStore.setTempUnit(unit)
+    override suspend fun updateSettings(settings: Settings) {
+        settingsDataStore.updateSettings(settings)
     }
 }

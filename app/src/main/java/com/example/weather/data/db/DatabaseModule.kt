@@ -1,7 +1,8 @@
 package com.example.weather.data.db
 
 import android.content.Context
-import androidx.room.Room
+import com.example.weather.data.db.settings.SettingsDao
+import com.example.weather.data.db.weather.WeatherDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,16 +15,18 @@ import javax.inject.Singleton
 class DatabaseModule {
 
     @Provides
-    fun provideDao(appDatabase: WeatherDatabase): WeatherDao {
+    fun provideWeatherDao(appDatabase: WeatherDatabase): WeatherDao {
         return appDatabase.weatherDao()
+    }
+
+    @Provides
+    fun provideSettingsDao(appDatabase: WeatherDatabase): SettingsDao {
+        return appDatabase.settingsDao()
     }
 
     @Provides
     @Singleton
     fun provideAppDatabase(@ApplicationContext appContext: Context): WeatherDatabase {
-        return Room
-            .databaseBuilder(appContext, WeatherDatabase::class.java, "weather_database")
-            .fallbackToDestructiveMigration()
-            .build()
+        return WeatherDatabase.getDatabase(appContext)
     }
 }

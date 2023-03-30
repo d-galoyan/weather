@@ -1,6 +1,5 @@
 package com.example.weather.presentation.screens.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weather.domain.useCases.city.GetAllCityWeatherUseCase
@@ -53,8 +52,7 @@ class HomeViewModel @Inject constructor(
     fun updateWeathers() {
         _isUpdating.update { true }
         viewModelScope.launch {
-            val settings = getSettings().first()
-            updateWeatherDataUseCase(settings.tempUnit)
+            updateWeatherDataUseCase(getSettings().first().tempUnit)
         }.invokeOnCompletion {
             _isUpdating.update { false }
         }
