@@ -11,7 +11,7 @@ import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.Text
+import androidx.compose.material.Text
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -54,7 +54,7 @@ fun HomeScreen(
             if (weathers.isNotEmpty()) {
                 Text(
                     text = DateTimeUtils(LocalDateTime.now().toString()).getDateTime(),
-                    modifier = Modifier.padding(bottom = 16.dp)
+                    modifier = Modifier.padding(bottom = 16.dp),
                 )
                 CitiesGridScreen(
                     weathers,

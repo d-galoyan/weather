@@ -6,10 +6,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Text
+import androidx.compose.material.RadioButton
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -26,10 +25,6 @@ fun SettingScreen() {
     val settingsViewModel: SettingsViewModel = hiltViewModel()
     val settings by settingsViewModel.settings.collectAsState()
 
-   /* LaunchedEffect(key1 =){
-
-    }*/
-
     Column(
         modifier = Modifier.padding(16.dp)
     ) {
@@ -42,7 +37,7 @@ fun SettingScreen() {
         ) {
             Text(
                 text = stringResource(id = R.string.temperature_unit),
-                style = MaterialTheme.typography.h6
+                style = MaterialTheme.typography.h6,
             )
             Column {
                 for (unit in TempUnit.values()) {
