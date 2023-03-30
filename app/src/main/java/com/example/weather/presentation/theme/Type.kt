@@ -1,4 +1,4 @@
-package com.example.artspace.ui.theme
+package com.example.weather.presentation.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
