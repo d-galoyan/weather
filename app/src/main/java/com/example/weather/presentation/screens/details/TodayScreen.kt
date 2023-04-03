@@ -37,7 +37,8 @@ fun TodayScreen(weather: Weather) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     ImageByWeatherCode(
                         today.weatherCode,
-                        Modifier.size(160.dp)
+                        Modifier.size(160.dp),
+                        false
                     )
                     PrintWeatherCondition(today.weatherCode)
                 }

@@ -9,7 +9,7 @@ import com.example.weather.domain.models.WeatherCondition
 @Composable
 fun PrintWeatherCondition(code: Int) {
     val condition = WeatherCondition.values()
-        .find { it.code == code } ?: WeatherCondition.Sunny
+        .find { it.code == code } ?: WeatherCondition.ClearSky
 
     Text(
         text = stringResource(id = condition.desc),

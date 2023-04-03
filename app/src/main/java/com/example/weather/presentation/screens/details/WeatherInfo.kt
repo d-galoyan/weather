@@ -77,7 +77,8 @@ fun WeatherInfo(
                     Text(text = "${it.temp}${DegreeSymbol}")
                     ImageByWeatherCode(
                         it.weatherCode,
-                        Modifier.size(32.dp)
+                        Modifier.size(32.dp),
+                        false
                     )
                     Text(text = it.time)
                 }

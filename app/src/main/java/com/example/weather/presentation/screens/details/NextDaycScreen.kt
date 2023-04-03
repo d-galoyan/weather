@@ -81,7 +81,7 @@ fun WeatherItem(
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     ImageByWeatherCode(
                         nextDay.weatherCode,
-                        Modifier.size(48.dp)
+                        Modifier.size(48.dp),
                     )
                     Column {
                         Text(text = "${nextDay.dailyMax}${DegreeSymbol}")

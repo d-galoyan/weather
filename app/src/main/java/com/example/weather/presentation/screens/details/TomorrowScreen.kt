@@ -40,7 +40,8 @@ fun TomorrowScreen(weather: Weather) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     ImageByWeatherCode(
                         tomorrow.weatherCode,
-                        Modifier.size(160.dp)
+                        Modifier.size(160.dp),
+                        false
                     )
                     PrintWeatherCondition(tomorrow.weatherCode)
                 }

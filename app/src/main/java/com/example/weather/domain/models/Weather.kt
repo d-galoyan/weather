@@ -51,14 +51,42 @@ data class DayWeather(
 )
 
 enum class WeatherCondition(val code : Int, @StringRes val desc : Int) {
-    Sunny(0, R.string.sunny),
-    PartiallyCloudy(1, R.string.partially_cloudy),
-    MostlyCloudy(2, R.string.mostly_cloudy),
-    Cloudy(3, R.string.cloudy),
-    PartiallyRainy(61, R.string.partially_rainy),
-    MostlyRainy(62, R.string.mostly_cloudy),
-    Rain(63, R.string.rain),
-    PartiallyShower(80, R.string.partially_showers),
-    MostlyShower(81, R.string.mostly_showers),
-    Showers(82, R.string.showers)
+    ClearSky(0, R.string.sunny),
+
+    MainlyClear(1, R.string.partially_cloudy),
+    PartlyCloudy(2, R.string.partially_cloudy),
+    Overcast(3, R.string.mostly_cloudy),
+
+    Fog(45, R.string.mostly_cloudy),
+    RimeFog(48, R.string.mostly_cloudy),
+
+    LightDrizzle(51, R.string.mostly_cloudy),
+    ModerateDrizzle(53, R.string.mostly_cloudy),
+    StrongDrizzle(55, R.string.mostly_cloudy),
+    FreezingLightDrizzle(56, R.string.mostly_cloudy),
+    FreezingStrongDrizzle(57, R.string.mostly_cloudy),
+
+    LightRain(61, R.string.mostly_cloudy),
+    ModerateRain(63, R.string.mostly_cloudy),
+    HeavyRain(65, R.string.mostly_cloudy),
+    FreezingLightRain(65, R.string.mostly_cloudy),
+    FreezingHeavyRain(67, R.string.mostly_cloudy),
+
+    LightSnow(71, R.string.mostly_cloudy),
+    ModerateSnow(73, R.string.mostly_cloudy),
+    HeavySnow(75, R.string.mostly_cloudy),
+
+    SnowGrains(77, R.string.mostly_cloudy),
+
+    SlightShowers(80, R.string.mostly_cloudy),
+    ModerateShowers(81, R.string.mostly_cloudy),
+    ViolentShowers(82, R.string.mostly_cloudy),
+
+    LightSnowShowers(85, R.string.mostly_cloudy),
+    HeavySnowShowers(86, R.string.mostly_cloudy),
+
+    Thunderstorm(95, R.string.mostly_cloudy),
+    SlightThunderstormHail(96, R.string.mostly_cloudy),
+    HeavyThunderstormHail(99, R.string.mostly_cloudy),
+
 }
