@@ -11,7 +11,7 @@ import com.example.weather.R
 import com.example.weather.domain.models.WeatherCondition
 
 val images = mapOf(
-    WeatherCondition.ClearSky.code to Pair(R.raw.clear_sky, 1f),
+    WeatherCondition.ClearSky.code to Pair(R.raw.sun, 1f),
     WeatherCondition.MainlyClear.code to Pair(R.raw.mainly_sunny, 1f),
     WeatherCondition.PartlyCloudy.code to Pair(R.raw.patly_cloudy, 1f),
     WeatherCondition.Overcast.code to Pair(R.raw.overcast, 1f),
@@ -52,7 +52,7 @@ val images = mapOf(
 @Composable
 fun ImageByWeatherCode(code: Int, modifier: Modifier = Modifier, isAnimated: Boolean = true) {
 
-    val icon = images[code] ?: Pair(R.raw.clear_sky, 1f)
+    val icon = images[code] ?: Pair(R.raw.sun, 1f)
 
     val composition by rememberLottieComposition(
         spec = LottieCompositionSpec.RawRes(icon.first)
