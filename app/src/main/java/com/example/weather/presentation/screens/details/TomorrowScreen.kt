@@ -33,7 +33,7 @@ fun TomorrowScreen(weather: Weather) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Column(modifier = Modifier.padding(top = 32.dp)) {
+                Column {
                     PrintDayAndWeekDay(tomorrow.day)
                     DayNightTempInfo(weather.toWeatherShort())
                 }
