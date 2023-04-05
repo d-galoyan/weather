@@ -57,7 +57,7 @@ fun AutoCompleteTextField(
             placeholder = { Text(text = placeholder) },
             modifier = modifier.fillMaxWidth(),
             colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = MaterialTheme.colors.background
+                backgroundColor = MaterialTheme.colors.onPrimary
             ),
             leadingIcon = {
                 Icon(imageVector = Icons.Default.ArrowBack,
@@ -74,8 +74,7 @@ fun AutoCompleteTextField(
                         text = ""
                     })
             },
-
-            )
+        )
 
         LazyColumn(
             modifier = modifier
