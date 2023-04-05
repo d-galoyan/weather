@@ -27,6 +27,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.weather.domain.models.WeatherShort
 import com.example.weather.presentation.commons.DayNightTempInfo
@@ -108,6 +109,7 @@ fun SwipeToAction(action: () -> Unit, item: @Composable () -> Unit) {
             ) {
                 Icon(
                     Icons.Default.Delete,
+                    tint = Color.White,
                     contentDescription = null,
                 )
             }
