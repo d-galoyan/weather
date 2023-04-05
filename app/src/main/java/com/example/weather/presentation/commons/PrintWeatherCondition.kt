@@ -4,15 +4,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import com.example.weather.domain.models.WeatherCondition
 
 @Composable
 fun PrintWeatherCondition(code: Int) {
-    val condition = WeatherCondition.values()
-        .find { it.code == code } ?: WeatherCondition.ClearSky
+    val desc = IconsMap[code]?.desc ?: DefaultIconDetails.desc
 
     Text(
-        text = stringResource(id = condition.desc),
+        text = stringResource(id = desc),
         style = MaterialTheme.typography.body2
     )
 }

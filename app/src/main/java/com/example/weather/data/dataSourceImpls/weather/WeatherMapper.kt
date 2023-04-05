@@ -1,11 +1,10 @@
-package com.example.weather.data.mappers
+package com.example.weather.data.dataSourceImpls.weather
 
-import com.example.weather.data.db.DailyWeatherEntity
-import com.example.weather.data.db.DailyWithHourly
-import com.example.weather.data.db.HourlyWeatherEntity
-import com.example.weather.data.db.WeatherEntity
-import com.example.weather.data.db.WeatherWithHourlyAndDaily
-import com.example.weather.data.dataSourceImpls.weather.WeatherDataModel
+import com.example.weather.data.db.weather.DailyWeatherEntity
+import com.example.weather.data.db.weather.DailyWithHourly
+import com.example.weather.data.db.weather.HourlyWeatherEntity
+import com.example.weather.data.db.weather.WeatherEntity
+import com.example.weather.data.db.weather.WeatherWithHourlyAndDaily
 import com.example.weather.data.utils.DateTimeUtils
 import com.example.weather.domain.models.Hourly
 import com.example.weather.domain.models.DayWeather

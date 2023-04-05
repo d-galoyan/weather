@@ -4,15 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.weather.data.dataSourceImpls.settings.toSettingsEntity
 import com.example.weather.data.db.settings.SettingsDao
 import com.example.weather.data.db.settings.SettingsEntity
+import com.example.weather.data.db.weather.DailyWeatherEntity
+import com.example.weather.data.db.weather.HourlyWeatherEntity
 import com.example.weather.data.db.weather.WeatherDao
-import com.example.weather.domain.models.Settings
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.weather.data.db.weather.WeatherEntity
 
 @Database(
     entities = [
@@ -38,18 +35,8 @@ abstract class WeatherDatabase : RoomDatabase() {
                 Room
                     .databaseBuilder(context, WeatherDatabase::class.java, "weather_database")
                     .fallbackToDestructiveMigration()
-                    .addCallback(RoomDatabaseCallbacks)
                     .build()
                     .also { Instance = it }
-            }
-        }
-
-        private val RoomDatabaseCallbacks = object : Callback() {
-            override fun onCreate(db: SupportSQLiteDatabase) {
-                super.onCreate(db)
-                CoroutineScope(Dispatchers.IO).launch {
-                    Instance?.settingsDao()?.insert(Settings().toSettingsEntity())
-                }
             }
         }
     }

@@ -22,10 +22,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
-import com.example.weather.data.db.DailyWeatherEntity
-import com.example.weather.data.db.HourlyWeatherEntity
-import com.example.weather.data.db.WeatherEntity
-import com.example.weather.data.db.WeatherWithHourlyAndDaily
 import kotlinx.coroutines.flow.Flow
 
 /**

@@ -1,4 +1,4 @@
-package com.example.weather.data.mappers
+package com.example.weather.data.dataSourceImpls.places
 
 import com.example.weather.data.dataSourceImpls.places.Geometry
 import com.example.weather.data.dataSourceImpls.places.GooglePrediction

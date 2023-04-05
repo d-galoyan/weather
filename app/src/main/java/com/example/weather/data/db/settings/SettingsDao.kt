@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface SettingsDao {
     @Query("SELECT * from settings")
-    fun getSettings(): Flow<SettingsEntity>
+    fun getSettings(): Flow<SettingsEntity?>
 
-    @Update()
+    @Update
     suspend fun update(item: SettingsEntity)
 
     @Insert

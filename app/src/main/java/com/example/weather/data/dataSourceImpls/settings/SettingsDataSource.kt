@@ -11,7 +11,7 @@ import javax.inject.Inject
 class SettingsDataSourceImpl @Inject constructor(private val db: WeatherDatabase) :
     SettingDataSource {
     override suspend fun getSettings(): Flow<Settings> {
-        return db.settingsDao().getSettings().map { it.toSettings() }
+        return db.settingsDao().getSettings().map { it?.toSettings() ?: Settings()}
     }
 
     override suspend fun updateSettings(settings: Settings) {

@@ -35,12 +35,11 @@ fun TodayScreen(weather: Weather) {
             ) {
                 TemperatureInfo(weather)
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    PrintWeatherCondition(today.weatherCode)
                     ImageByWeatherCode(
                         today.weatherCode,
                         Modifier.size(160.dp),
-                        false
                     )
-                    PrintWeatherCondition(today.weatherCode)
                 }
             }
             Row {

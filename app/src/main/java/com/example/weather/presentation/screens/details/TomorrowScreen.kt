@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.weather.data.mappers.toWeatherShort
+import com.example.weather.data.dataSourceImpls.weather.toWeatherShort
 import com.example.weather.domain.models.Weather
 import com.example.weather.presentation.commons.DayNightTempInfo
 import com.example.weather.presentation.commons.ImageByWeatherCode
@@ -38,12 +38,11 @@ fun TomorrowScreen(weather: Weather) {
                     DayNightTempInfo(weather.toWeatherShort())
                 }
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    PrintWeatherCondition(tomorrow.weatherCode)
                     ImageByWeatherCode(
                         tomorrow.weatherCode,
                         Modifier.size(160.dp),
-                        false
                     )
-                    PrintWeatherCondition(tomorrow.weatherCode)
                 }
             }
 

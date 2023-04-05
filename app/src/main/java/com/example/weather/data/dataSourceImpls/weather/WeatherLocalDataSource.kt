@@ -3,11 +3,6 @@ package com.example.weather.data.dataSourceImpls.weather
 import androidx.room.Transaction
 import androidx.room.withTransaction
 import com.example.weather.data.db.WeatherDatabase
-import com.example.weather.data.mappers.toShortWeather
-import com.example.weather.data.mappers.toWeather
-import com.example.weather.data.mappers.toWeatherDailyEntity
-import com.example.weather.data.mappers.toWeatherEntity
-import com.example.weather.data.mappers.toWeatherHourlyEntity
 import com.example.weather.data.utils.DateFormatter
 import com.example.weather.domain.dataSources.WeatherDataSource
 import com.example.weather.domain.models.CityGeometry
