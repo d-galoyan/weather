@@ -51,7 +51,7 @@ fun CitiesGridScreen(
         items(weathers.size, key = { weathers[it].id }) { index ->
             val weather = weathers[index]
             Card(
-                elevation = 16.dp,
+                elevation = 2.dp,
                 modifier = Modifier
                     .fillMaxWidth()
                     .animateItemPlacement(
