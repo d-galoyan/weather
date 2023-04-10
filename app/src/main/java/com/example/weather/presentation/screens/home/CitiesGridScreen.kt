@@ -1,5 +1,8 @@
 package com.example.weather.presentation.screens.home
 
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -33,6 +36,7 @@ import com.example.weather.domain.models.WeatherShort
 import com.example.weather.presentation.commons.DayNightTempInfo
 import com.example.weather.presentation.commons.ImageByWeatherCode
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CitiesGridScreen(
     weathers: List<WeatherShort>,
@@ -43,6 +47,7 @@ fun CitiesGridScreen(
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier.fillMaxWidth()
+
     ) {
         items(weathers.size, key = { weathers[it].id }) { index ->
             val weather = weathers[index]
@@ -50,6 +55,11 @@ fun CitiesGridScreen(
                 elevation = 16.dp,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .animateItemPlacement(
+                        animationSpec = spring(
+                            stiffness = Spring.StiffnessMedium,
+                        )
+                    )
                     .clickable {
                         navigateToDetails(weather.id)
                     }
