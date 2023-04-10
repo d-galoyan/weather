@@ -30,7 +30,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface WeatherDao {
 
-    @Query("SELECT * from weather")
+    @Query("SELECT MAX(position) FROM weather")
+    fun getTheLastPosition(): Int?
+
+    @Query("SELECT * from weather ORDER BY position ASC")
     fun getAllCitiesWeather(): Flow<List<WeatherEntity>>
 
     @Transaction

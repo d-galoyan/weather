@@ -30,8 +30,8 @@ class HomeViewModel @Inject constructor(
     private val getSettings: GetSettingsUseCase
 ) : ViewModel() {
 
-    private val _undoable = MutableStateFlow<Stack<Undoable>>(Stack())
-    val undoable: StateFlow<Stack<Undoable>> = _undoable.asStateFlow()
+    private val _weatherRemovalStack = MutableStateFlow<Stack<Undoable>>(Stack())
+    val weatherRemovalStack: StateFlow<Stack<Undoable>> = _weatherRemovalStack.asStateFlow()
 
     private val _isUpdating = MutableStateFlow(false)
     val isUpdating: StateFlow<Boolean> = _isUpdating.asStateFlow()
@@ -68,7 +68,7 @@ class HomeViewModel @Inject constructor(
 
     fun removeWeather(id: String) {
         viewModelScope.launch {
-            _undoable.update { current ->
+            _weatherRemovalStack.update { current ->
                 current.push(removeWeatherUseCase(id))
                 current
             }
@@ -80,13 +80,13 @@ class HomeViewModel @Inject constructor(
         cancelStackClearJob?.cancel()
         cancelStackClearJob = viewModelScope.launch {
             delay(5000)
-            _undoable.update { Stack() }
+            _weatherRemovalStack.update { Stack() }
         }
     }
 
     fun undo() {
         viewModelScope.launch {
-            _undoable.value.pop().undo()
+            _weatherRemovalStack.value.pop().undo()
             scheduleClearStackJob()
         }
     }

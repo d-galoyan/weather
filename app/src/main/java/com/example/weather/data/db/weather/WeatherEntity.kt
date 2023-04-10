@@ -20,10 +20,11 @@ data class WeatherEntity(
     val currentTemp: Float,
     val windSpeed: Float,
     val tempUnit: String,
-    val humidityUnit : String,
-    val pressureUnit : String,
+    val humidityUnit: String,
+    val pressureUnit: String,
     val windSpeedUnit: String,
     val weatherCode: Int,
+    val position: Int,
 )
 
 @Entity(

@@ -18,7 +18,7 @@ import com.example.weather.data.db.weather.WeatherEntity
         DailyWeatherEntity::class,
         SettingsEntity::class
     ],
-    version = 15,
+    version = 19,
     exportSchema = false
 )
 abstract class WeatherDatabase : RoomDatabase() {

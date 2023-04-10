@@ -62,6 +62,7 @@ fun WeatherDataModel.toWeather(cityName: String): Weather {
         pressureUnit = unit.pressureUnit,
         days = nextDays,
         windSpeedUnit = dailyUnits.windSpeedUnit,
+        position = 0
     )
 }
 
@@ -74,11 +75,12 @@ fun WeatherEntity.toShortWeather(): WeatherShort {
         lat = lat,
         long = lng,
         tempUnit = tempUnit,
-        weatherCode = weatherCode
+        weatherCode = weatherCode,
+        position = position
     )
 }
 
-fun Weather.toWeatherEntity(): WeatherEntity {
+fun Weather.toWeatherEntity(position: Int): WeatherEntity {
     return WeatherEntity(
         id = id,
         cityName = cityName,
@@ -92,7 +94,8 @@ fun Weather.toWeatherEntity(): WeatherEntity {
         humidityUnit = humidityUnit,
         pressureUnit = pressureUnit,
         windSpeedUnit = windSpeedUnit,
-        weatherCode = days[0].weatherCode
+        weatherCode = days[0].weatherCode,
+        position
     )
 }
 
@@ -105,7 +108,8 @@ fun Weather.toWeatherShort(): WeatherShort {
         dailyMax = dailyMax,
         nightMax = nightMax,
         tempUnit = tempUnit,
-        weatherCode = days[0].weatherCode
+        weatherCode = days[0].weatherCode,
+        position = position
     )
 }
 
@@ -172,6 +176,7 @@ fun WeatherWithHourlyAndDaily.toWeather(): Weather {
         humidityUnit = weather.humidityUnit,
         pressureUnit = weather.pressureUnit,
         windSpeedUnit = weather.windSpeedUnit,
-        days = daily.map { it.toNextDay() }
+        days = daily.map { it.toNextDay() },
+        position = weather.position
     )
 }

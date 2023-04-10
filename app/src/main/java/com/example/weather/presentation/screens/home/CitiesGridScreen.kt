@@ -41,13 +41,12 @@ import com.example.weather.presentation.commons.ImageByWeatherCode
 fun CitiesGridScreen(
     weathers: List<WeatherShort>,
     navigateToDetails: (String) -> Unit,
-    removeWeather: (String) -> Unit
+    removeWeather: (String) -> Unit,
 ) {
 
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier.fillMaxWidth()
-
+        modifier = Modifier.fillMaxWidth(),
     ) {
         items(weathers.size, key = { weathers[it].id }) { index ->
             val weather = weathers[index]
@@ -57,7 +56,7 @@ fun CitiesGridScreen(
                     .fillMaxWidth()
                     .animateItemPlacement(
                         animationSpec = spring(
-                            stiffness = Spring.StiffnessMedium,
+                            stiffness = Spring.StiffnessLow,
                         )
                     )
                     .clickable {

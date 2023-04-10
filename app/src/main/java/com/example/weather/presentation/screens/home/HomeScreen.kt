@@ -1,36 +1,24 @@
 package com.example.weather.presentation.screens.home
 
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.Text
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
-import com.example.weather.data.utils.ConnectionState
 import com.example.weather.data.utils.DateTimeUtils
-import com.example.weather.presentation.utils.connectivityState
 import java.time.LocalDateTime
 
 
@@ -40,16 +28,13 @@ fun HomeScreen(
     navigateToDetails: (String) -> Unit,
     onNewCityClick: () -> Unit,
 ) {
-    val connection by connectivityState()
     val homeViewModel = hiltViewModel<HomeViewModel>()
     val uiState by homeViewModel.homeUiState.collectAsState()
     val weathers = uiState.weathers
     val isRefreshing by homeViewModel.isUpdating.collectAsState()
-    val undoable by homeViewModel.undoable.collectAsState()
+    val weatherRemovalStack by homeViewModel.weatherRemovalStack.collectAsState()
     val pullRefreshState =
         rememberPullRefreshState(isRefreshing, { homeViewModel.updateWeathers() })
-
-    val isConnected = connection === ConnectionState.Available
 
     Box(
         modifier = Modifier
@@ -64,23 +49,18 @@ fun HomeScreen(
                     modifier = Modifier.padding(bottom = 16.dp),
                 )
                 CitiesGridScreen(
-                    weathers.reversed(),
-                    navigateToDetails,
-                    removeWeather = { homeViewModel.removeWeather(it) })
+                    weathers = weathers,
+                    navigateToDetails = navigateToDetails,
+                    removeWeather = { homeViewModel.removeWeather(it) }
+                )
             }
         }
 
-        FloatingActionButton(
-            onClick = {
-                if (isConnected) onNewCityClick()
-            },
-            backgroundColor = if (isConnected) MaterialTheme.colors.onPrimary else Color.Gray,
-            modifier = Modifier
-                .padding(all = 32.dp)
-                .align(alignment = Alignment.BottomEnd),
-        ) {
-            Icon(Icons.Filled.Add, "Add New City")
-        }
+        AddButton(
+            size = weatherRemovalStack.size,
+            onAddCity = onNewCityClick,
+            modifier = Modifier.align(alignment = Alignment.BottomEnd),
+        )
 
         PullRefreshIndicator(
             refreshing = isRefreshing,
@@ -88,23 +68,10 @@ fun HomeScreen(
             modifier = Modifier.align(Alignment.TopCenter)
         )
 
-        Surface(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(MaterialTheme.colors.onPrimary)
-                .align(Alignment.BottomCenter)
-                .animateContentSize(
-                    animationSpec = spring(
-                        stiffness = Spring.StiffnessLow
-                    )
-                )
-        ) {
-            if (undoable.size > 0) {
-                UndoRemoval(
-                    undoable = undoable,
-                    undo = { homeViewModel.undo() }
-                )
-            }
-        }
+        UndoRemoval(
+            size = weatherRemovalStack.size,
+            undo = { homeViewModel.undo() },
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
     }
 }

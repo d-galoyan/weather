@@ -51,10 +51,22 @@ class WeatherLocalDataSource @Inject constructor(
             .map { it -> it.map { it.toShortWeather() } }
     }
 
+
+    private fun getThePosition(initialPosition: Int): Int {
+        if(initialPosition != 0){
+            return initialPosition
+        }
+        val lastPosition = database.weatherDao().getTheLastPosition()
+
+
+       return if(lastPosition != null) lastPosition + 1 else 1
+    }
+
     @Transaction
     override suspend fun saveWeather(weather: Weather) {
         database.withTransaction {
-            database.weatherDao().insert(weather.toWeatherEntity())
+
+            database.weatherDao().insert(weather.toWeatherEntity(getThePosition(weather.position)))
             val ids = database.weatherDao()
                 .insertDaily(weather.days.map { it.toWeatherDailyEntity(weather.id) })
 

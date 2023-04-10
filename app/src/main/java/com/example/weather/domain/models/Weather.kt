@@ -13,7 +13,8 @@ data class Weather(
     val windSpeedUnit: String,
     val humidityUnit: String,
     val pressureUnit: String,
-    val days: List<DayWeather>
+    val days: List<DayWeather>,
+    val position : Int
 )
 
 data class WeatherShort(
@@ -25,6 +26,7 @@ data class WeatherShort(
     val long: Float,
     val tempUnit: String,
     val weatherCode: Int,
+    val position: Int,
 )
 
 data class Hourly(
