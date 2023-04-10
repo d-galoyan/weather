@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.weather.R
+import com.example.weather.data.utils.DateTimeUtils
 import com.example.weather.domain.models.DayWeather
 import com.example.weather.presentation.commons.ImageByWeatherCode
 
@@ -25,6 +26,10 @@ fun WeatherInfo(
     humidityUnit: String,
     pressureUnit: String
 ) {
+
+    fun timeFormat (dateTime : String) : String {
+       return DateTimeUtils(dateTime).getTime()
+    }
 
     Column(
         modifier = Modifier
@@ -60,7 +65,7 @@ fun WeatherInfo(
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(text = "${stringResource(id = R.string.sunrise)}/${stringResource(id = R.string.sunset)}")
-                Text(text = "${nextDay.sunrise}, ${nextDay.sunset}")
+                Text(text = "${timeFormat(nextDay.sunrise)}, ${timeFormat(nextDay.sunset)}")
             }
         }
         LazyRow(
@@ -80,7 +85,7 @@ fun WeatherInfo(
                         Modifier.size(32.dp),
                         false
                     )
-                    Text(text = it.time)
+                    Text(text =  timeFormat(it.time))
                 }
             }
         }

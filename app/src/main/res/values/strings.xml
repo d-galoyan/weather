@@ -45,4 +45,6 @@
     <string name="thunderstorm">Thunderstorm</string>
     <string name="slight_thunderstorm_hail">Slight Thunderstorm Hail</string>
     <string name="heavy_thunderstorm_hail">Heavy Thunderstorm Hail</string>
+    <string name="city_forecast_deleted">City forecast deleted</string>
+    <string name="undo">Undo</string>
 </resources>

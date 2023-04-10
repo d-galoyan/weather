@@ -37,7 +37,7 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch {
             settings = getSettings().map { it }.stateIn(
                 scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(),
+                started = SharingStarted.WhileSubscribed(5000L),
                 initialValue = Settings()
             )
         }

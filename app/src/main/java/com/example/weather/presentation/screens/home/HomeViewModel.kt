@@ -5,8 +5,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.weather.domain.useCases.city.GetAllCityWeatherUseCase
 import com.example.weather.domain.useCases.settings.GetSettingsUseCase
 import com.example.weather.domain.useCases.weather.RemoveWeatherUseCase
+import com.example.weather.domain.useCases.Undoable
 import com.example.weather.domain.useCases.weather.UpdateWeatherDataUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -16,6 +19,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.util.Stack
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,12 +30,16 @@ class HomeViewModel @Inject constructor(
     private val getSettings: GetSettingsUseCase
 ) : ViewModel() {
 
-    private val _isUpdating = MutableStateFlow(false)
+    private val _undoable = MutableStateFlow<Stack<Undoable>>(Stack())
+    val undoable: StateFlow<Stack<Undoable>> = _undoable.asStateFlow()
 
+    private val _isUpdating = MutableStateFlow(false)
     val isUpdating: StateFlow<Boolean> = _isUpdating.asStateFlow()
 
     lateinit var homeUiState: StateFlow<HomeUiState>
         private set
+
+    var cancelStackClearJob: Job? = null
 
     init {
         getCitiesWeatherInfo()
@@ -60,7 +68,26 @@ class HomeViewModel @Inject constructor(
 
     fun removeWeather(id: String) {
         viewModelScope.launch {
-            removeWeatherUseCase(id)
+            _undoable.update { current ->
+                current.push(removeWeatherUseCase(id))
+                current
+            }
+            scheduleClearStackJob()
+        }
+    }
+
+    private fun scheduleClearStackJob() {
+        cancelStackClearJob?.cancel()
+        cancelStackClearJob = viewModelScope.launch {
+            delay(5000)
+            _undoable.update { Stack() }
+        }
+    }
+
+    fun undo() {
+        viewModelScope.launch {
+            _undoable.value.pop().undo()
+            scheduleClearStackJob()
         }
     }
 

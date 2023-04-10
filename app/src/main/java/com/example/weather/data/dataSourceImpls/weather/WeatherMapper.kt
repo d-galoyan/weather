@@ -5,7 +5,6 @@ import com.example.weather.data.db.weather.DailyWithHourly
 import com.example.weather.data.db.weather.HourlyWeatherEntity
 import com.example.weather.data.db.weather.WeatherEntity
 import com.example.weather.data.db.weather.WeatherWithHourlyAndDaily
-import com.example.weather.data.utils.DateTimeUtils
 import com.example.weather.domain.models.Hourly
 import com.example.weather.domain.models.DayWeather
 import com.example.weather.domain.models.Weather
@@ -137,7 +136,7 @@ fun Hourly.toWeatherHourlyEntity(dayId: Long): HourlyWeatherEntity {
 
 fun HourlyWeatherEntity.toHourly(): Hourly {
     return Hourly(
-        time = DateTimeUtils(time).getTime(),
+        time = time,
         temp = temp.toInt(),
         apparentTemp = apparentTemp.toInt(),
         humidity = humidity,
@@ -152,8 +151,8 @@ fun DailyWithHourly.toNextDay(): DayWeather {
         dailyMax = daily.maxTemp,
         nightMax = daily.minTemp,
         windSpeed = daily.windSpeed,
-        sunrise = DateTimeUtils(daily.sunrise).getTime(),
-        sunset = DateTimeUtils(daily.sunset).getTime(),
+        sunrise = daily.sunrise,
+        sunset = daily.sunset,
         hourly = hourly.map { it.toHourly() },
         weatherCode = daily.weatherCode
     )

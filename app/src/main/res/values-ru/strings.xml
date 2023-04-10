@@ -46,4 +46,8 @@
     <string name="thunderstorm">Гроза</string>
     <string name="slight_thunderstorm_hail">Слабая гроза с градом</string>
     <string name="heavy_thunderstorm_hail">Сильный грозовой град</string>
+
+    <string name="city_forecast_deleted">Прогноз города удален</string>
+    <string name="undo">Oтменить</string>
+
 </resources>

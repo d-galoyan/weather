@@ -23,7 +23,7 @@ class WeatherRepo @Inject constructor(private val weatherDataSource: WeatherData
         return weatherDataSource.getWeather(id)
     }
 
-    override suspend fun removeWeather(id: String) {
+    override suspend fun removeWeather(id: String) : Weather {
         return weatherDataSource.removeWeather(id)
     }
 

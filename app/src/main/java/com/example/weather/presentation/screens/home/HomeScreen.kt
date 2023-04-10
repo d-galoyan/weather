@@ -1,9 +1,13 @@
 package com.example.weather.presentation.screens.home
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FloatingActionButton
@@ -20,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
@@ -27,6 +32,7 @@ import com.example.weather.data.utils.ConnectionState
 import com.example.weather.data.utils.DateTimeUtils
 import com.example.weather.presentation.utils.connectivityState
 import java.time.LocalDateTime
+
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -39,6 +45,7 @@ fun HomeScreen(
     val uiState by homeViewModel.homeUiState.collectAsState()
     val weathers = uiState.weathers
     val isRefreshing by homeViewModel.isUpdating.collectAsState()
+    val undoable by homeViewModel.undoable.collectAsState()
     val pullRefreshState =
         rememberPullRefreshState(isRefreshing, { homeViewModel.updateWeathers() })
 
@@ -57,7 +64,7 @@ fun HomeScreen(
                     modifier = Modifier.padding(bottom = 16.dp),
                 )
                 CitiesGridScreen(
-                    weathers,
+                    weathers.reversed(),
                     navigateToDetails,
                     removeWeather = { homeViewModel.removeWeather(it) })
             }
@@ -80,5 +87,24 @@ fun HomeScreen(
             state = pullRefreshState,
             modifier = Modifier.align(Alignment.TopCenter)
         )
+
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colors.onPrimary)
+                .align(Alignment.BottomCenter)
+                .animateContentSize(
+                    animationSpec = spring(
+                        stiffness = Spring.StiffnessLow
+                    )
+                )
+        ) {
+            if (undoable.size > 0) {
+                UndoRemoval(
+                    undoable = undoable,
+                    undo = { homeViewModel.undo() }
+                )
+            }
+        }
     }
 }

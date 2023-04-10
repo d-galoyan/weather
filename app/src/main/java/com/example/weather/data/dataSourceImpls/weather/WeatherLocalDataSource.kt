@@ -40,8 +40,10 @@ class WeatherLocalDataSource @Inject constructor(
         return database.weatherDao().getWeather(id).map { it.toWeather() }
     }
 
-    override suspend fun removeWeather(id: String) {
-        return database.weatherDao().deleteWeather(id)
+    override suspend fun removeWeather(id: String): Weather {
+        val weather = getWeather(id).first()
+        database.weatherDao().deleteWeather(id)
+        return weather
     }
 
     override suspend fun getAlCitiesShortForecast(): Flow<List<WeatherShort>> {
@@ -66,20 +68,22 @@ class WeatherLocalDataSource @Inject constructor(
         }
     }
 
+    @Transaction
     override suspend fun updateWeathers(unit: TempUnit) {
-        val weatherShort = getAlCitiesShortForecast().first()
+        database.withTransaction {
+            val weatherShort = getAlCitiesShortForecast().first()
 
-        weatherShort.forEach {
-            val weather = getForecast(
-                CityGeometry(
-                    lng = it.long,
-                    lat = it.lat,
-                ),
-                it.cityName,
-                unit = unit
-            )
-            saveWeather(weather = weather.copy(id = it.id))
+            weatherShort.forEach {
+                val weather = getForecast(
+                    CityGeometry(
+                        lng = it.long,
+                        lat = it.lat,
+                    ),
+                    it.cityName,
+                    unit = unit
+                )
+                saveWeather(weather = weather.copy(id = it.id))
+            }
         }
     }
-
 }

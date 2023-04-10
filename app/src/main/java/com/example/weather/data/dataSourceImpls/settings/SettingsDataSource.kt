@@ -15,6 +15,6 @@ class SettingsDataSourceImpl @Inject constructor(private val db: WeatherDatabase
     }
 
     override suspend fun updateSettings(settings: Settings) {
-        return db.settingsDao().update(settings.toSettingsEntity())
+        return db.settingsDao().insert(settings.toSettingsEntity())
     }
 }
