@@ -2,6 +2,7 @@ package com.example.weather.data.workers
 
 import android.content.Context
 import android.util.Log
+import androidx.hilt.work.HiltWorker
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
@@ -10,6 +11,8 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.example.weather.domain.useCases.weather.UpdateWeatherDataUseCase
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -17,10 +20,11 @@ import java.util.concurrent.TimeUnit
 
 const val TAG = "Updating Weather"
 
-class UpdateWeatherWorker(
-    context: Context,
-    params: WorkerParameters,
-    private val updateWeathersUseCase: UpdateWeatherDataUseCase,
+@HiltWorker
+class UpdateWeatherWorker @AssistedInject constructor(
+    @Assisted context: Context,
+    @Assisted params: WorkerParameters,
+    val updateWeathersUseCase: UpdateWeatherDataUseCase,
 ) : CoroutineWorker(context, params) {
 
     override suspend fun doWork(): Result {
@@ -40,7 +44,7 @@ class UpdateWeatherWorker(
     }
 }
 
-fun updateWeatherWorker(@ApplicationContext context : Context){
+fun updateWeatherWorker(@ApplicationContext context: Context) {
 
     val constraints = Constraints.Builder()
         .setRequiredNetworkType(NetworkType.CONNECTED)
