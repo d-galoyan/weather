@@ -1,5 +1,7 @@
 package com.example.weather.data.dataSourceImpls.places
 
+import com.example.weather.data.mappers.toCity
+import com.example.weather.data.mappers.toCityGeometry
 import com.example.weather.domain.dataSources.PlaceDataSource
 import com.example.weather.domain.models.City
 import com.example.weather.domain.models.CityGeometry

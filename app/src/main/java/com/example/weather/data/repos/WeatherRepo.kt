@@ -1,6 +1,7 @@
 package com.example.weather.data.repos
 
 import com.example.weather.domain.dataSources.WeatherDataSource
+import com.example.weather.domain.models.City
 import com.example.weather.domain.models.CityGeometry
 import com.example.weather.domain.models.TempUnit
 import com.example.weather.domain.models.Weather
@@ -13,10 +14,10 @@ class WeatherRepo @Inject constructor(private val weatherDataSource: WeatherData
     WeatherRepository {
     override suspend fun getForecast(
         coordinates: CityGeometry,
-        cityName: String,
+        city: City,
         unit: TempUnit
     ): Weather {
-        return weatherDataSource.getForecast(coordinates, cityName, unit)
+        return weatherDataSource.getForecast(coordinates, city, unit)
     }
 
     override suspend fun getWeather(id: String): Flow<Weather> {

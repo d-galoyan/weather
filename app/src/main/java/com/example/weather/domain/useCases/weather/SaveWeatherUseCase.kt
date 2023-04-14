@@ -13,7 +13,7 @@ class SaveWeatherUseCase @Inject constructor(
 ) {
     suspend operator fun invoke(city: City, unit: TempUnit) {
         val coordinates = getCityCoordinates(city.id)
-        val weather = getForecast(coordinates, cityName = city.name, unit)
+        val weather = getForecast(coordinates, city, unit)
         weatherRepo.saveWeather(weather)
     }
 }

@@ -61,7 +61,6 @@ class HomeViewModel @Inject constructor(
         _isUpdating.update { true }
         viewModelScope.launch {
             updateWeatherDataUseCase(getSettings().first().tempUnit)
-        }.invokeOnCompletion {
             _isUpdating.update { false }
         }
     }

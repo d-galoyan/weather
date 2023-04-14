@@ -1,10 +1,12 @@
-package com.example.weather.data.dataSourceImpls.weather
+package com.example.weather.data.mappers
 
+import com.example.weather.data.models.WeatherDataModel
 import com.example.weather.data.db.weather.DailyWeatherEntity
 import com.example.weather.data.db.weather.DailyWithHourly
 import com.example.weather.data.db.weather.HourlyWeatherEntity
 import com.example.weather.data.db.weather.WeatherEntity
 import com.example.weather.data.db.weather.WeatherWithHourlyAndDaily
+import com.example.weather.domain.models.City
 import com.example.weather.domain.models.Hourly
 import com.example.weather.domain.models.DayWeather
 import com.example.weather.domain.models.Weather
@@ -12,7 +14,7 @@ import com.example.weather.domain.models.WeatherShort
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-fun WeatherDataModel.toWeather(cityName: String): Weather {
+fun WeatherDataModel.toWeather(city: City): Weather {
 
     val nextDays = mutableListOf<DayWeather>()
 
@@ -49,8 +51,8 @@ fun WeatherDataModel.toWeather(cityName: String): Weather {
     val today = nextDays[0]
 
     return Weather(
-        id = "$lat$long",
-        cityName = cityName,
+        id = city.id,
+        cityName = city.name,
         dailyMax = today.dailyMax,
         nightMax = today.nightMax,
         lat = lat,

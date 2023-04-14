@@ -3,8 +3,14 @@ package com.example.weather.data.dataSourceImpls.weather
 import androidx.room.Transaction
 import androidx.room.withTransaction
 import com.example.weather.data.db.WeatherDatabase
+import com.example.weather.data.mappers.toShortWeather
+import com.example.weather.data.mappers.toWeather
+import com.example.weather.data.mappers.toWeatherDailyEntity
+import com.example.weather.data.mappers.toWeatherEntity
+import com.example.weather.data.mappers.toWeatherHourlyEntity
 import com.example.weather.data.utils.DateFormatter
 import com.example.weather.domain.dataSources.WeatherDataSource
+import com.example.weather.domain.models.City
 import com.example.weather.domain.models.CityGeometry
 import com.example.weather.domain.models.TempUnit
 import com.example.weather.domain.models.Weather
@@ -21,7 +27,7 @@ class WeatherLocalDataSource @Inject constructor(
 
     override suspend fun getForecast(
         coordinates: CityGeometry,
-        cityName: String,
+        city: City,
         unit: TempUnit
     ): Weather {
         val (long, lat) = coordinates
@@ -33,7 +39,7 @@ class WeatherLocalDataSource @Inject constructor(
             dateFormatter.getCurrentFormattedDate(),
             dateFormatter.addDays(9).getFormattedDate(),
             unit.value
-        ).toWeather(cityName)
+        ).toWeather(city)
     }
 
     override suspend fun getWeather(id: String): Flow<Weather> {
@@ -65,7 +71,6 @@ class WeatherLocalDataSource @Inject constructor(
     @Transaction
     override suspend fun saveWeather(weather: Weather) {
         database.withTransaction {
-
             database.weatherDao().insert(weather.toWeatherEntity(getThePosition(weather.position)))
             val ids = database.weatherDao()
                 .insertDaily(weather.days.map { it.toWeatherDailyEntity(weather.id) })
@@ -91,7 +96,10 @@ class WeatherLocalDataSource @Inject constructor(
                         lng = it.long,
                         lat = it.lat,
                     ),
-                    it.cityName,
+                    City(
+                        id = it.id,
+                        name = it.cityName
+                    ),
                     unit = unit
                 )
                 saveWeather(weather = weather.copy(id = it.id))

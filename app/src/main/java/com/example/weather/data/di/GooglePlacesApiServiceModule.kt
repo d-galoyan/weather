@@ -1,6 +1,6 @@
-package com.example.weather.data.dataSourceImpls.places
+package com.example.weather.data.di
 
-import com.example.weather.data.di.NetworkModule
+import com.example.weather.data.dataSourceImpls.places.GooglePlacesApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

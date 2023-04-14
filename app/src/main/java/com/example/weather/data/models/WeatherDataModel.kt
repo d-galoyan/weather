@@ -1,4 +1,4 @@
-package com.example.weather.data.dataSourceImpls.weather
+package com.example.weather.data.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

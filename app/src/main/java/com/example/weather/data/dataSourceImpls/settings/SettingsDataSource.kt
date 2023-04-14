@@ -1,12 +1,13 @@
 package com.example.weather.data.dataSourceImpls.settings
 
 import com.example.weather.data.db.WeatherDatabase
+import com.example.weather.data.mappers.toSettings
+import com.example.weather.data.mappers.toSettingsEntity
 import com.example.weather.domain.dataSources.SettingDataSource
 import com.example.weather.domain.models.Settings
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
-
 
 class SettingsDataSourceImpl @Inject constructor(private val db: WeatherDatabase) :
     SettingDataSource {

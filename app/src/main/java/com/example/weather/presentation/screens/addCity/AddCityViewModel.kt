@@ -51,7 +51,6 @@ class AddCityViewModel @Inject constructor(
         savingCity = true
         viewModelScope.launch {
             saveWeatherUseCase(city, getSettings().first().tempUnit)
-        }.invokeOnCompletion {
             onFinish()
         }
     }

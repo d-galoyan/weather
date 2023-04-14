@@ -1,4 +1,4 @@
-package com.example.weather.data.dataSourceImpls.settings
+package com.example.weather.data.mappers
 
 import com.example.weather.data.db.settings.SettingsEntity
 import com.example.weather.domain.models.Settings
