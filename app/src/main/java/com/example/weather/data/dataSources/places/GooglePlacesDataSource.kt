@@ -1,4 +1,4 @@
-package com.example.weather.data.dataSourceImpls.places
+package com.example.weather.data.dataSources.places
 
 import com.example.weather.data.mappers.toCity
 import com.example.weather.data.mappers.toCityGeometry

@@ -1,6 +1,6 @@
 package com.example.weather.data.di
 
-import com.example.weather.data.dataSourceImpls.settings.SettingsDataSourceImpl
+import com.example.weather.data.dataSources.settings.SettingsDataSourceImpl
 import com.example.weather.data.repos.SettingsRepo
 import com.example.weather.domain.repositories.SettingsRepository
 import dagger.Module

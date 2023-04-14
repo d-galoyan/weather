@@ -1,6 +1,6 @@
 package com.example.weather.data.di
 
-import com.example.weather.data.dataSourceImpls.places.GooglePlacesDataSource
+import com.example.weather.data.dataSources.places.GooglePlacesDataSource
 import com.example.weather.data.repos.PlacesRepo
 import com.example.weather.domain.repositories.PlacesRepository
 import dagger.Module

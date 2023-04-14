@@ -1,4 +1,4 @@
-package com.example.weather.data.dataSourceImpls.weather
+package com.example.weather.data.dataSources.weather
 
 import androidx.room.Transaction
 import androidx.room.withTransaction
