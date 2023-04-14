@@ -8,7 +8,6 @@ import com.example.weather.domain.models.WeatherShort
 import kotlinx.coroutines.flow.Flow
 
 interface WeatherDataSource {
-
     suspend fun getForecast(coordinates: CityGeometry, city : City, unit : TempUnit): Weather
     suspend fun getWeather(id : String): Flow<Weather>
     suspend fun removeWeather(id : String) : Weather

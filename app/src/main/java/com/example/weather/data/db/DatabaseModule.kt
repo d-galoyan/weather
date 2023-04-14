@@ -1,6 +1,7 @@
 package com.example.weather.data.db
 
 import android.content.Context
+import androidx.room.Room
 import com.example.weather.data.db.settings.SettingsDao
 import com.example.weather.data.db.weather.WeatherDao
 import dagger.Module
@@ -27,6 +28,9 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideAppDatabase(@ApplicationContext appContext: Context): WeatherDatabase {
-        return WeatherDatabase.getDatabase(appContext)
+        return Room
+            .databaseBuilder(appContext, WeatherDatabase::class.java, "weather_database")
+            .fallbackToDestructiveMigration()
+            .build()
     }
 }
