@@ -18,7 +18,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
-import com.example.weather.data.utils.DateTimeUtils
+import com.example.weather.presentation.utils.DateTimeUtils
 import java.time.LocalDateTime
 
 

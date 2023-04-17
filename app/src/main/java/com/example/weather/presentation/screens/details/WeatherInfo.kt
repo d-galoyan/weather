@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.weather.R
-import com.example.weather.data.utils.DateTimeUtils
+import com.example.weather.presentation.utils.DateTimeUtils
 import com.example.weather.domain.models.DayWeather
 import com.example.weather.presentation.commons.ImageByWeatherCode
 
