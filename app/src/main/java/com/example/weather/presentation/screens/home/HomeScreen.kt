@@ -31,8 +31,8 @@ fun HomeScreen(
     val homeViewModel = hiltViewModel<HomeViewModel>()
     val uiState by homeViewModel.homeUiState.collectAsState()
     val weathers = uiState.weathers
-    val isRefreshing by homeViewModel.isUpdating.collectAsState()
-    val weatherRemovalStack by homeViewModel.weatherRemovalStack.collectAsState()
+    val isRefreshing = homeViewModel.isUpdating
+    val weatherRemovalStack = homeViewModel.weatherRemovalStack
     val pullRefreshState =
         rememberPullRefreshState(isRefreshing, { homeViewModel.updateWeathers() })
 

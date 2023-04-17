@@ -12,7 +12,6 @@ import com.example.weather.domain.dataSources.WeatherDataSource
 import com.example.weather.domain.models.Weather
 import com.example.weather.domain.models.WeatherShort
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -26,12 +25,12 @@ class WeatherLocalDataSource @Inject constructor(
         }
     }
 
-    override suspend fun getWeather(id: String): Flow<Weather> {
-        return db.weatherDao().getWeather(id).map { it.toWeather() }
+    override suspend fun getWeather(id: String): Weather {
+        return db.weatherDao().getWeather(id).toWeather()
     }
 
     override suspend fun removeWeather(id: String): Weather {
-        val weather = getWeather(id).first()
+        val weather = getWeather(id)
         db.weatherDao().deleteWeather(id)
         return weather
     }

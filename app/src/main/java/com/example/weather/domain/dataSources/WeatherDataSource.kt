@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface WeatherDataSource {
     suspend fun <R> withTransaction(block: suspend () -> R): R
-    suspend fun getWeather(id : String): Flow<Weather>
+    suspend fun getWeather(id : String): Weather
     suspend fun removeWeather(id : String) : Weather
     suspend fun getWeathersShort(): Flow<List<WeatherShort>>
     suspend fun saveWeather(weather: Weather)

@@ -38,7 +38,7 @@ interface WeatherDao {
 
     @Transaction
     @Query("SELECT * from weather WHERE id = :id")
-    fun getWeather(id: String): Flow<WeatherWithHourlyAndDaily>
+    suspend fun getWeather(id: String): WeatherWithHourlyAndDaily
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(weather: WeatherEntity)

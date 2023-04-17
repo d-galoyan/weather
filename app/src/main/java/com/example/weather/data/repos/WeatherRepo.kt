@@ -18,7 +18,7 @@ class WeatherRepo @Inject constructor(
     private val weatherForecastApiDataSource: WeatherForecastDataSource
 ) : WeatherRepository {
 
-    override suspend fun getWeather(id: String): Flow<Weather> {
+    override suspend fun getWeather(id: String): Weather {
         return weatherDataSource.getWeather(id)
     }
 
