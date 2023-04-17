@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            WeatherTheme(themeMode() === ThemeMode.Dark) {
+            WeatherTheme(themeMode() == ThemeMode.Dark) {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background

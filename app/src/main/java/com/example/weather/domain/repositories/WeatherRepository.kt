@@ -8,10 +8,10 @@ import com.example.weather.domain.models.WeatherShort
 import kotlinx.coroutines.flow.Flow
 
 interface WeatherRepository {
-    suspend fun getForecast(coordinates: CityGeometry, city : City, unit : TempUnit): Weather
     suspend fun getWeather(id : String): Flow<Weather>
     suspend fun removeWeather(id : String) : Weather
     suspend fun getAlCitiesShortForecast(): Flow<List<WeatherShort>>
-    suspend fun saveWeather(weather: Weather)
+    suspend fun fetchForecastAndSaveWeather(coordinates: CityGeometry, city : City, unit : TempUnit)
+    suspend fun saveWeather(weather : Weather)
     suspend fun updateWeathers(unit : TempUnit)
 }

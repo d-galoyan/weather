@@ -1,5 +1,6 @@
 package com.example.weather.data.di
 
+import com.example.weather.data.dataSources.weather.WeatherForecastApiDataSource
 import com.example.weather.data.dataSources.weather.WeatherLocalDataSource
 import com.example.weather.data.repos.WeatherRepo
 import com.example.weather.domain.repositories.WeatherRepository
@@ -13,8 +14,11 @@ import dagger.hilt.components.SingletonComponent
 class WeatherRepositoryModule {
 
     @Provides
-    fun providesWeatherRepository(weatherLocalDataSource: WeatherLocalDataSource): WeatherRepository {
-        return WeatherRepo(weatherLocalDataSource)
+    fun providesWeatherRepository(
+        weatherLocalDataSource: WeatherLocalDataSource,
+        weatherApiService: WeatherForecastApiDataSource
+    ): WeatherRepository {
+        return WeatherRepo(weatherLocalDataSource, weatherApiService)
     }
 }
 

@@ -27,7 +27,7 @@ class SettingsViewModel @Inject constructor(
         private set
 
     val isDark: Boolean
-        get() = settings.value.theme === ThemeMode.Dark
+        get() = settings.value.theme == ThemeMode.Dark
 
     init {
         getSetting()

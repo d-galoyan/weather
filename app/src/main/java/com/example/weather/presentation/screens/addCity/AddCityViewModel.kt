@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.weather.domain.models.City
 import com.example.weather.domain.useCases.city.GetCityUseCase
 import com.example.weather.domain.useCases.settings.GetSettingsUseCase
-import com.example.weather.domain.useCases.weather.SaveWeatherUseCase
+import com.example.weather.domain.useCases.weather.SaveCityUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -20,7 +20,7 @@ import javax.inject.Inject
 class AddCityViewModel @Inject constructor(
     private val getCityUseCase: GetCityUseCase,
     private val getSettings: GetSettingsUseCase,
-    private val saveWeatherUseCase: SaveWeatherUseCase,
+    private val saveCityUseCase: SaveCityUseCase,
 ) : ViewModel() {
 
     private var job: Job? = null
@@ -50,7 +50,7 @@ class AddCityViewModel @Inject constructor(
     fun onCitySelect(city: City, onFinish: () -> Unit) {
         savingCity = true
         viewModelScope.launch {
-            saveWeatherUseCase(city, getSettings().first().tempUnit)
+            saveCityUseCase(city, getSettings().first().tempUnit)
             onFinish()
         }
     }
