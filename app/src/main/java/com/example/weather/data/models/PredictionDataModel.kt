@@ -2,11 +2,11 @@ package com.example.weather.data.models
 
 import com.google.gson.annotations.SerializedName
 
-data class GooglePredictionDataModel(
-    val predictions: ArrayList<GooglePrediction>
+data class PredictionDataModel(
+    val predictions: List<Prediction>
 )
 
-data class GooglePrediction(
+data class Prediction(
     val description: String,
     @SerializedName(value = "place_id")
     val placeId: String

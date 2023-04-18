@@ -1,6 +1,6 @@
 package com.example.weather.data.dataSources.places
 
-import com.example.weather.data.models.GooglePredictionDataModel
+import com.example.weather.data.models.PredictionDataModel
 import com.example.weather.data.models.PlaceGeometry
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -15,7 +15,7 @@ interface GooglePlacesApiService {
         @Query("key") key: String = GOOGLE_API_KEY,
         @Query("types") types: String = "locality",
         @Query("input") input: String
-    ): GooglePredictionDataModel
+    ): PredictionDataModel
 
     @GET("details/json")
     suspend fun getGeometry(

@@ -89,5 +89,5 @@ data class DailyWithHourly(
         parentColumn = "id",
         entityColumn = "day_id",
     )
-    var hourly: List<HourlyWeatherEntity>,
+    val hourly: List<HourlyWeatherEntity>,
 )

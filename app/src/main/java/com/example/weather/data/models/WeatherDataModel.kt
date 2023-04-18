@@ -19,14 +19,14 @@ data class WeatherDataModel(
     @SerializedName(value = "current_weather")
     val currentWeather: CurrentWeather,
     @SerializedName(value = "hourly_units")
-    val unit: Unit,
+    val unit: WeatherUnit,
     @SerializedName(value = "daily_units")
     val dailyUnits: DailyUnit,
     val hourly: Hourly,
     val daily: Daily,
 )
 
-data class Unit(
+data class WeatherUnit(
     @SerializedName(value = "temperature_2m")
     val tempUnit: String,
     @SerializedName(value = "relativehumidity_2m")

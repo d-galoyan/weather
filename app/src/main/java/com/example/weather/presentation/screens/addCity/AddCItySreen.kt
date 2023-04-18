@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
@@ -18,12 +19,25 @@ import com.example.weather.presentation.commons.Spinner
 fun AddCityScreen(
     onBack: () -> Unit
 ) {
+
     val focusManager = LocalFocusManager.current
     val addCityViewModel = hiltViewModel<AddCityViewModel>()
     val predictions = addCityViewModel.predictions
     val saving = addCityViewModel.savingCity
+    val citySaved = addCityViewModel.citySaved
 
-    Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colors.onPrimary)) {
+
+    LaunchedEffect(citySaved) {
+        if (citySaved) {
+            onBack()
+        }
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colors.onPrimary)
+    ) {
         AutoCompleteTextField(
             placeholder = stringResource(id = R.string.search_places),
             itemList = predictions,
@@ -34,9 +48,7 @@ fun AddCityScreen(
             onBack = onBack,
             onItemSelect = {
                 focusManager.clearFocus()
-                addCityViewModel.onCitySelect(it) {
-                    onBack()
-                }
+                addCityViewModel.onCitySelect(it)
             }
         )
         Spinner(

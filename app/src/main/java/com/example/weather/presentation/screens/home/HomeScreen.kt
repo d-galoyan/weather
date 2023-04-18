@@ -18,7 +18,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
-import com.example.weather.presentation.utils.DateTimeUtils
+import com.example.weather.presentation.utils.DateTimeFormat
+import com.example.weather.presentation.utils.formatDateTime
 import java.time.LocalDateTime
 
 
@@ -45,7 +46,7 @@ fun HomeScreen(
         Column(modifier = Modifier.padding(16.dp)) {
             if (weathers.isNotEmpty()) {
                 Text(
-                    text = DateTimeUtils(LocalDateTime.now().toString()).getDateTime(),
+                    text = formatDateTime(LocalDateTime.now().toString(), DateTimeFormat.DateTime),
                     modifier = Modifier.padding(bottom = 16.dp),
                 )
                 CitiesGridScreen(

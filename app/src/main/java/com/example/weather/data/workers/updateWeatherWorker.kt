@@ -62,7 +62,7 @@ fun updateWeatherWorker(@ApplicationContext context: Context) {
 
     WorkManager.getInstance(context).enqueueUniquePeriodicWork(
         TAG,
-        ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE,
+        ExistingPeriodicWorkPolicy.UPDATE,
         periodicWorkRequest
     )
 

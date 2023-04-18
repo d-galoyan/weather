@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NetworkModule {
 
     @Provides
-    fun provideRetrofit(): Retrofit {
+    fun provideRetrofitBuilder(): Retrofit.Builder {
 
         val gson = GsonBuilder()
             .setLenient()
@@ -22,6 +22,5 @@ class NetworkModule {
         return Retrofit.Builder()
             .baseUrl("http://placeholder.com/")
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
     }
 }

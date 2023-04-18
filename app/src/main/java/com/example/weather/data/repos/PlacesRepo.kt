@@ -4,10 +4,8 @@ import com.example.weather.domain.dataSources.PlaceDataSource
 import com.example.weather.domain.models.City
 import com.example.weather.domain.models.CityGeometry
 import com.example.weather.domain.repositories.PlacesRepository
-import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
-@ViewModelScoped
 class PlacesRepo @Inject constructor(
     private val placeDataSource: PlaceDataSource,
 ) : PlacesRepository {

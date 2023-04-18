@@ -24,6 +24,9 @@ class AddCityViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var job: Job? = null
+    var citySaved by mutableStateOf(false)
+        private set
+
     var savingCity by mutableStateOf(false)
         private set
 
@@ -47,11 +50,11 @@ class AddCityViewModel @Inject constructor(
         job = getPredictions(name)
     }
 
-    fun onCitySelect(city: City, onFinish: () -> Unit) {
+    fun onCitySelect(city: City) {
         savingCity = true
         viewModelScope.launch {
             saveCityUseCase(city, getSettings().first().tempUnit)
-            onFinish()
+            citySaved = true
         }
     }
 }

@@ -24,7 +24,7 @@ class WeatherForecastApiDataSource @Inject constructor(private val weatherApi: W
             long,
             lat,
             dateFormatter.getCurrentFormattedDate(),
-            dateFormatter.addDays(9).getFormattedDate(),
+            dateFormatter.getFormattedSinceTodayDays(9),
             unit.value
         ).toWeather(city)
     }

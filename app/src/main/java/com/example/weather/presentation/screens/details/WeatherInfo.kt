@@ -15,9 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.weather.R
-import com.example.weather.presentation.utils.DateTimeUtils
 import com.example.weather.domain.models.DayWeather
 import com.example.weather.presentation.commons.ImageByWeatherCode
+import com.example.weather.presentation.utils.DateTimeFormat
+import com.example.weather.presentation.utils.formatDateTime
 
 @Composable
 fun WeatherInfo(
@@ -28,7 +29,7 @@ fun WeatherInfo(
 ) {
 
     fun timeFormat (dateTime : String) : String {
-       return DateTimeUtils(dateTime).getTime()
+       return formatDateTime(dateTime, DateTimeFormat.Time)
     }
 
     Column(

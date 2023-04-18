@@ -11,7 +11,6 @@ import com.example.weather.domain.useCases.settings.UpdateSettingsUseCase
 import com.example.weather.domain.useCases.weather.UpdateWeatherDataUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -35,7 +34,7 @@ class SettingsViewModel @Inject constructor(
 
     private fun getSetting() {
         viewModelScope.launch {
-            settings = getSettings().map { it }.stateIn(
+            settings = getSettings().stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5000L),
                 initialValue = Settings()
